@@ -77,6 +77,7 @@
     .sleeve-back .back-listen  { font-size: 0.68rem; }
     .sleeve-back .back-question { font-size: 0.72rem; }
     .sleeve-back .back-footer  { font-size: 0.55rem; }
+    .sleeve-back .back-lyrics-link { font-size: 0.55rem; }
 
     /* Record label text: also needs a bump on small screens */
     .label-logo   { font-size: 0.62rem; }
@@ -369,8 +370,25 @@
     font-family: 'Oswald', sans-serif;
     font-size: clamp(0.35rem, 0.8vw, 0.48rem);
     color: #aaa;
-    text-align: right;
     letter-spacing: 0.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .sleeve-back .back-lyrics-link {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(0.35rem, 0.8vw, 0.48rem);
+    color: #c44;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .sleeve-back .back-lyrics-link:hover {
+    text-decoration: underline;
   }
 
   /* ===== INDIVIDUAL LABEL STYLES ===== */
@@ -1026,6 +1044,7 @@ const songs = [
     label: "PHILIPS",
     labelClass: "label-philips",
     cat: "PHM 200-135",
+    lyrics: "https://genius.com/Nina-simone-mississippi-goddam-lyrics",
     situation: "Simone wrote this after the 16th Street Baptist Church bombing in Birmingham and the assassination of Medgar Evers. She called it a show tune about murder. Radio stations across the South returned their promotional copies snapped in half.",
     listen: "LISTEN — to the audience at the beginning. They're laughing. Find the moment they stop.",
     question: "What can you hear in this song that you can't read in a printed speech from the same year?"
@@ -1037,6 +1056,7 @@ const songs = [
     label: "RCA VICTOR",
     labelClass: "label-rca",
     cat: "47-8486",
+    lyrics: "https://genius.com/Sam-cooke-a-change-is-gonna-come-lyrics",
     situation: "Cooke was one of the most successful pop singers in America when he was turned away from a whites-only motel in Shreveport, Louisiana. He recorded this in January 1964. He was shot and killed that December at age 33.",
     listen: "LISTEN — to the strings and the arrangement. This sounds like a love song. Ask yourself why Cooke would choose that form for this subject.",
     question: "Compare this to Simone's 'Mississippi Goddam.' Both are from 1964. Both are about the same crisis. How does the musical form change the argument?"
@@ -1048,6 +1068,7 @@ const songs = [
     label: "COLUMBIA",
     labelClass: "label-columbia",
     cat: "CS 8901",
+    lyrics: "https://genius.com/Pete-seeger-we-shall-overcome-lyrics",
     situation: "This started as a hymn among Black tobacco workers in the 1940s, traveled through the Highlander Folk School, got picked up by white folk singers, and by 1963 everyone at the March on Washington knew every word. Jackson sang it minutes before King spoke.",
     listen: "LISTEN — to what Jackson's voice does. If you know the Pete Seeger version, compare the two. Pay attention to what she does differently with the melody and the phrasing.",
     question: "This hymn passed from Black workers to white folk singers and back to a Black gospel singer. What changed at each stage? What stayed the same?"
@@ -1059,6 +1080,7 @@ const songs = [
     label: "ABC-PARAMOUNT",
     labelClass: "label-curtom",
     cat: "ABC 10622",
+    lyrics: "https://genius.com/The-impressions-people-get-ready-lyrics",
     situation: "The Impressions were charting pop hits while Mayfield was writing civil rights theology into three-minute gospel records. The freedom train in this song pulls from the Underground Railroad and Black church tradition at the same time.",
     listen: "LISTEN — to the melody and the chord changes. Close your eyes. Where does this song sound like it belongs? Now read the lyrics.",
     question: "Why might wrapping a political message in gospel form reach people that an explicit protest song couldn't?"
@@ -1070,6 +1092,7 @@ const songs = [
     label: "KING",
     labelClass: "label-king",
     cat: "45-6187",
+    lyrics: "https://genius.com/James-brown-say-it-loud-im-black-and-im-proud-lyrics",
     situation: "Brown recorded this in August 1968, a few months after King was assassinated. The chorus is call-and-response with a group of kids and teenagers from Los Angeles. It went to #1 on the R&B chart. It also cost Brown a big chunk of his white audience.",
     listen: "LISTEN — to the voices on the chorus. Those are children from Los Angeles, not professional backup singers. Brown picked them on purpose.",
     question: "After this record, Brown's white crossover audience dropped off. What does that commercial cost tell you about the limits of crossover politics in 1968?"
@@ -1081,6 +1104,7 @@ const songs = [
     label: "FANTASY",
     labelClass: "label-fantasy",
     cat: "F-634",
+    lyrics: "https://genius.com/Creedence-clearwater-revival-fortunate-son-lyrics",
     situation: "John Fogerty wrote this in about 25 minutes. CCR were working-class guys from El Cerrito, California, exactly the kind of people who got drafted while senators' sons got deferments. The whole song is under two and a half minutes.",
     listen: "LISTEN — to how fast it's over. Two and a half minutes, four chords, one repeated phrase. Count the number of words in the chorus.",
     question: "This is a class argument about the draft, not a pacifist argument against war itself. What's the difference? And why does it matter for how we remember Vietnam?"
@@ -1092,6 +1116,7 @@ const songs = [
     label: "ATCO",
     labelClass: "label-atco",
     cat: "45-6459",
+    lyrics: "https://genius.com/Buffalo-springfield-for-what-its-worth-lyrics",
     situation: "Stephen Stills wrote this about the Sunset Strip curfew riots, a fight between young people and police over club closings in Los Angeles. It had nothing to do with Vietnam. Listeners turned it into an antiwar anthem on their own.",
     listen: "LISTEN — to the lyrics and try to figure out what the song is actually about. Write down every concrete detail Stills gives you. How many did you find?",
     question: "This song's meaning drifted completely from what Stills intended. Whose interpretation counts, the writer's or the public's? What does that tell you about how we build historical memory?"
@@ -1103,6 +1128,7 @@ const songs = [
     label: "VANGUARD",
     labelClass: "label-vanguard",
     cat: "VRS-9171",
+    lyrics: "https://genius.com/Buffy-sainte-marie-universal-soldier-lyrics",
     situation: "Sainte-Marie, a Cree singer-songwriter, wrote this in a café basement in Toronto. She goes after governments, but she also goes after the soldiers who volunteer and the civilians who let it happen.",
     listen: "LISTEN — to who she's talking about in each verse. Make a list. It's longer than you'd expect from an antiwar song.",
     question: "Compare this to Sadler's 'Green Berets.' Both songs take the soldier seriously. Where do they disagree about what a soldier means?"
@@ -1114,6 +1140,7 @@ const songs = [
     label: "ATLANTIC",
     labelClass: "label-atlantic",
     cat: "45-2740",
+    lyrics: "https://genius.com/Crosby-stills-nash-and-young-ohio-lyrics",
     situation: "Neil Young wrote this right after seeing the photographs of the Kent State shootings on May 4, 1970. National Guard troops had killed four unarmed students during a Vietnam War protest. The record was in stores within weeks.",
     listen: "LISTEN — to Young's voice on 'four dead in Ohio.' They recorded this in one take. You can hear it.",
     question: "This was written, recorded, and released within weeks of Kent State. How does that speed change what kind of historical document it is?"
@@ -1125,6 +1152,7 @@ const songs = [
     label: "VANGUARD",
     labelClass: "label-vanguard",
     cat: "VSD-79266",
+    lyrics: "https://genius.com/Country-joe-and-the-fish-i-feel-like-im-fixin-to-die-rag-lyrics",
     situation: "Country Joe McDonald wrote this as a vaudeville number about dying in Vietnam. It's deliberately absurd. The 'FISH' cheer at Woodstock (the letters actually spelled something else) became one of the most recognized moments of the festival.",
     listen: "LISTEN — to the melody by itself, without the words. Hum it. Now read the lyrics. Hold both in your head at the same time.",
     question: "What can satire do that a serious protest song can't? And where does satire fall short?"
@@ -1136,6 +1164,7 @@ const songs = [
     label: "DUNHILL",
     labelClass: "label-dunhill",
     cat: "D-4009",
+    lyrics: "https://genius.com/Barry-mcguire-eve-of-destruction-lyrics",
     situation: "P.F. Sloan wrote this in one night. McGuire's vocal was supposed to be a rough demo take, but they released it anyway. Multiple radio stations banned it. 'Ballad of the Green Berets' was written partly as a direct response.",
     listen: "LISTEN — to the vocal. McGuire is stumbling over words, almost out of breath. This was a demo they never re-recorded. Compare the sound quality to any Motown single from the same year.",
     question: "This got banned on radio stations across the country while 'Green Berets' got full airplay. What does that tell you about who decided what Americans could hear in 1965?"
@@ -1147,6 +1176,7 @@ const songs = [
     label: "RCA VICTOR",
     labelClass: "label-rca",
     cat: "47-8739",
+    lyrics: "https://genius.com/Sgt-barry-sadler-ballad-of-the-green-berets-lyrics",
     situation: "Sadler was a Green Beret medic who served in Vietnam and caught a punji stake wound. His record sold nine million copies, more than any protest song of the entire decade. It was the #1 single of 1966.",
     listen: "LISTEN — to the rhythm. Tap it out. Then listen to the word choices: 'brave,' 'true,' 'the best.' Where have you heard language like that before? Think outside of music.",
     question: "'Green Berets' outsold every protest song combined. If you only studied the protest music, what picture of the 1960s would you miss?"
@@ -1158,6 +1188,7 @@ const songs = [
     label: "CAPITOL",
     labelClass: "label-capitol",
     cat: "2626",
+    lyrics: "https://genius.com/Merle-haggard-okie-from-muskogee-lyrics",
     situation: "Haggard wrote this on a tour bus passing through Muskogee, Oklahoma. He said later it started as a joke. It became an anthem for people who felt the counterculture had written them off. Nixon invited him to the White House.",
     listen: "LISTEN — to the crowd, not Haggard. This is a live recording. Listen to what the audience does after each line. What are they reacting to?",
     question: "Haggard grew up poor in Bakersfield and did time in San Quentin. How does that biography complicate reading this song as simply 'conservative'?"
@@ -1169,6 +1200,7 @@ const songs = [
     label: "ATLANTIC",
     labelClass: "label-atlantic",
     cat: "45-2403",
+    lyrics: "https://genius.com/Aretha-franklin-respect-lyrics",
     situation: "Otis Redding wrote and recorded this first, as a man telling a woman he wanted respect when he came home. Franklin took it and flipped it. By the summer of 1967 it was #1 on the pop chart and movement activists were already claiming it as theirs.",
     listen: "LISTEN — to the parts Franklin added that aren't in Redding's version: the spelling out, the 'sock it to me' bridge, the backing vocals. What do her additions change about what the song is saying?",
     question: "Can one song work for multiple movements at the same time? How does 'Respect' operate as both a racial argument and a gendered one? Do those readings work together or pull against each other?"
@@ -1180,6 +1212,7 @@ const songs = [
     label: "GORDY",
     labelClass: "label-gordy",
     cat: "G-7033",
+    lyrics: "https://genius.com/Martha-and-the-vandellas-dancing-in-the-street-lyrics",
     situation: "This came out on Motown's Gordy label in the summer of 1964, the same summer as the Harlem riot, the Philadelphia riot, and the passage of the Civil Rights Act. Motown said it was a party song. People in the movement heard a different song entirely.",
     listen: "LISTEN — to the list of cities she sings. Write them down. Then look up what was happening in each of those cities in the summer of 1964.",
     question: "Motown was careful about its public image and its crossover appeal. How does this song's ambiguity (party or protest?) serve both the label's commercial interests and the movement's goals?"
@@ -1191,6 +1224,7 @@ const songs = [
     label: "MERCURY",
     labelClass: "label-mercury",
     cat: "72206",
+    lyrics: "https://genius.com/Lesley-gore-you-dont-own-me-lyrics",
     situation: "Gore was 17 when she recorded this. Quincy Jones produced it. It peaked at #2, kept from #1 by the Beatles. This was three years before NOW was founded. A teenager on a major label made a declaration of autonomy that second-wave feminism would claim decades later.",
     listen: "LISTEN — to her voice in the first ten seconds. She was 17. Listen again to the last ten seconds. Does she sound 17?",
     question: "Gore came out as a lesbian decades later. Does that change how you hear this song? Should biographical facts that surface after a recording change how we read it historically?"
@@ -1202,6 +1236,7 @@ const songs = [
     label: "DECCA",
     labelClass: "label-decca",
     cat: "32749",
+    lyrics: "https://genius.com/Loretta-lynn-coal-miners-daughter-lyrics",
     situation: "Lynn wrote her own songs in a Nashville industry where women almost never did. This one is autobiographical: a one-room cabin in Butcher Holler, Kentucky. She described a life that country music had always lived around but rarely looked at directly.",
     listen: "LISTEN — to the nouns. Write down every specific thing she names: places, objects, people. Count them. Now compare that to the number of specific nouns in 'Eve of Destruction.'",
     question: "Is this a political song? Lynn doesn't protest anything. She describes a life. Can description itself be a political act? How does her approach compare to someone like Barry McGuire's?"
@@ -1213,6 +1248,7 @@ const songs = [
     label: "PHILIPS",
     labelClass: "label-philips",
     cat: "PHM 200-187",
+    lyrics: "https://genius.com/Nina-simone-strange-fruit-lyrics",
     situation: "Abel Meeropol, a Jewish schoolteacher in the Bronx, wrote this poem after seeing photographs of a lynching. Billie Holiday made it famous in 1939. Simone recorded it twenty-six years later on Pastel Blues — the Civil Rights Movement was still happening, and the song had nowhere to hide.",
     listen: "LISTEN — to what Simone does with the tempo. Holiday's version floats. Simone plants it. Find the moment where Simone's voice stops sounding like a singer and starts sounding like a witness.",
     question: "This song is from 1939 but Simone recorded it in 1965. What does it mean that the movement needed this song again? What had and hadn't changed in twenty-six years?"
@@ -1224,6 +1260,7 @@ const songs = [
     label: "FLYING DUTCHMAN",
     labelClass: "label-dutchman",
     cat: "FDS-131",
+    lyrics: "https://genius.com/Gil-scott-heron-whitey-on-the-moon-lyrics",
     situation: "Scott-Heron was 21 when he performed this spoken-word piece. He sets the Apollo 11 moon landing next to the daily reality of Black urban poverty: rent going up, rat bites, medical bills. The two Americas sit side by side in every couplet.",
     listen: "LISTEN — to the pattern. Write down the first line of each couplet, then the second. Put them in two columns. Look at the two lists side by side.",
     question: "Scott-Heron puts space triumph and urban poverty in the same frame. What happens to each story when you hold them together instead of keeping them separate?"
@@ -1235,6 +1272,7 @@ const songs = [
     label: "COLUMBIA",
     labelClass: "label-columbia",
     cat: "CS 8905",
+    lyrics: "https://genius.com/Bob-dylan-the-times-they-are-a-changin-lyrics",
     situation: "Dylan wrote this to be an anthem on purpose. He wanted something that would work the way 'We Shall Overcome' worked, as a rallying song. It came out in January 1964, three months after JFK was shot. Within two years, Dylan had gone electric and walked away from protest music.",
     listen: "LISTEN — to who he addresses in each verse. He talks to writers, senators, mothers, fathers. List them in order. Who's missing?",
     question: "Dylan walked away from protest music almost immediately after writing the most famous protest anthem of the era. What does it mean when the artist leaves the movement their song defines?"
@@ -1284,7 +1322,10 @@ songs.forEach((song) => {
             <div class="back-listen">${song.listen}</div>
           </div>
           <div class="back-question">${song.question}</div>
-          <div class="back-footer">${song.label} · ${song.cat}</div>
+          <div class="back-footer">
+            <span>${song.label} · ${song.cat}</span>
+            <a class="back-lyrics-link" href="${song.lyrics}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Read Lyrics ↗</a>
+          </div>
         </div>
       </div>
     </div>

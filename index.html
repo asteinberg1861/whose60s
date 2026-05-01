@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whose 1960s? — A Source Set</title>
+<title>Movement Music</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=Anton&family=Archivo+Black&family=Permanent+Marker&family=Courier+Prime:wght@700&family=DM+Serif+Display&family=Lora:ital,wght@0,400;1,400&family=Special+Elite&display=swap');
 
@@ -63,7 +63,26 @@
   }
 
   @media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; max-width: 400px; gap: 24px; }
+    .grid {
+      grid-template-columns: 1fr;
+      max-width: 360px;
+      gap: 24px;
+    }
+
+    /* Back-of-card text: bump up from vw-based clamp to readable px sizes on mobile */
+    .sleeve-back .back-title   { font-size: 1rem; }
+    .sleeve-back .back-artist  { font-size: 0.78rem; }
+    .sleeve-back .back-label-heading { font-size: 0.6rem; }
+    .sleeve-back .back-text    { font-size: 0.72rem; }
+    .sleeve-back .back-listen  { font-size: 0.68rem; }
+    .sleeve-back .back-question { font-size: 0.72rem; }
+    .sleeve-back .back-footer  { font-size: 0.55rem; }
+
+    /* Record label text: also needs a bump on small screens */
+    .label-logo   { font-size: 0.62rem; }
+    .label-title  { font-size: 0.82rem; }
+    .label-artist { font-size: 0.65rem; }
+    .label-year   { font-size: 0.48rem; }
   }
 
   /* === FLIP CARD === */
@@ -92,11 +111,24 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     overflow: hidden;
+    /* visibility transition: holds hidden state until halfway through the flip */
+    transition: visibility 0s linear 0.35s;
   }
 
   .card-back {
     transform: rotateY(180deg);
     border-radius: 4px;
+    visibility: hidden;
+  }
+
+  /* When flipped: hide front, show back */
+  .card.flipped .card-front {
+    visibility: hidden;
+  }
+
+  .card.flipped .card-back {
+    visibility: visible;
+    transition-delay: 0s;
   }
 
   /* === FULL 45 RPM RECORD === */
@@ -849,8 +881,8 @@
 <body>
 
 <header>
-  <h1>WHOSE <em>1960s</em>?</h1>
-  <div class="subtitle">A Source Set for American Society &amp; Culture</div>
+  <h1>MOVEMENT <em>MUSIC</em></h1>
+  <div class="subtitle">Songs from a Turbulent Decade</div>
   <div class="instructions">Click any record to flip it over and read the sleeve notes.</div>
 </header>
 

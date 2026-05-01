@@ -10,7 +10,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #111;
+    background: #f5f0e8;
     color: #e0e0e0;
     font-family: 'Lora', serif;
     min-height: 100vh;
@@ -25,7 +25,7 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(2.4rem, 6vw, 4.5rem);
     letter-spacing: 0.08em;
-    color: #fff;
+    color: #1a1a1a;
     line-height: 1;
   }
 
@@ -41,14 +41,14 @@
     font-size: clamp(0.7rem, 1.8vw, 0.95rem);
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #888;
+    color: #666;
     margin-top: 8px;
   }
 
   header .instructions {
     font-family: 'Lora', serif;
     font-size: 0.85rem;
-    color: #999;
+    color: #888;
     margin-top: 20px;
     font-style: italic;
   }
@@ -106,7 +106,7 @@
     border-radius: 50%;
     background: #111;
     position: relative;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+    box-shadow: none;
   }
 
   /* Vinyl grooves */
@@ -437,85 +437,413 @@
     font-family: 'Oswald', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.15em;
-    color: #555;
+    color: #999;
     text-transform: uppercase;
   }
 
-  /* ===== STEREO WIDGET ===== */
+  /* ===== MARANTZ STEREO WIDGET ===== */
   .stereo-section {
     max-width: 880px;
-    margin: 0 auto 48px;
+    margin: 0 auto 40px;
     padding: 0 24px;
   }
 
+  /* Outer chassis — dark anodized steel wrap */
   .stereo-unit {
-    background: linear-gradient(180deg, #2a2a2a 0%, #1c1c1c 40%, #141414 100%);
-    border: 1px solid #3a3a3a;
-    border-radius: 6px;
-    box-shadow: 0 2px 0 #000, 0 4px 0 rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.07), 0 8px 32px rgba(0,0,0,0.8);
+    background: #1a1a1a;
+    border-radius: 4px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.06) inset,
+      0 6px 0 #0a0a0a,
+      0 8px 0 rgba(255,255,255,0.03),
+      0 12px 40px rgba(0,0,0,0.9);
     overflow: hidden;
-    font-family: 'Oswald', sans-serif;
+    border: 1px solid #2a2a2a;
+    border-bottom: 3px solid #0a0a0a;
   }
 
+  /* Marantz champagne/gold brushed aluminum faceplate */
   .stereo-faceplate {
-    padding: 18px 24px 16px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.015) 2px,
+        rgba(255,255,255,0.015) 3px
+      ),
+      linear-gradient(180deg,
+        #c8a84a 0%,
+        #d4b55a 8%,
+        #c0983e 20%,
+        #b8902e 35%,
+        #c4a040 50%,
+        #b88c2a 65%,
+        #c09838 80%,
+        #a87c20 100%
+      );
+    padding: 14px 20px 12px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    border-bottom: 1px solid #0a0a0a;
-    background: linear-gradient(180deg, #282828 0%, #1e1e1e 100%);
+    gap: 14px;
     cursor: pointer;
     user-select: none;
     position: relative;
+    border-bottom: 2px solid #8a6010;
+    border-top: 1px solid #e0c060;
   }
 
-  .stereo-faceplate::after {
+  /* Top edge highlight */
+  .stereo-faceplate::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,240,160,0.6), transparent);
   }
 
-  .stereo-brand { display: flex; flex-direction: column; line-height: 1; flex-shrink: 0; }
-  .stereo-brand-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.22em; color: #c8c8c8; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
-  .stereo-brand-model { font-size: 0.48rem; letter-spacing: 0.3em; color: #555; text-transform: uppercase; margin-top: 2px; }
+  /* ---- LEFT SIDE: Brand + power ---- */
+  .mz-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex-shrink: 0;
+    min-width: 90px;
+  }
 
-  .stereo-vu { display: flex; gap: 3px; align-items: flex-end; height: 28px; flex-shrink: 0; }
-  .vu-bar { width: 4px; border-radius: 1px; background: #1a1a1a; height: 100%; position: relative; overflow: hidden; }
-  .vu-fill { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg, #2a8a2a 0%, #6dcc2a 60%, #e84040 100%); border-radius: 1px; height: 0%; }
+  .mz-brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .mz-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(0.85rem, 2vw, 1.15rem);
+    color: #1a0a00;
+    letter-spacing: 0.04em;
+    text-shadow: 0 1px 0 rgba(255,220,100,0.4);
+  }
+
+  .mz-brand-model {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.42rem;
+    letter-spacing: 0.35em;
+    color: #3a2000;
+    text-transform: uppercase;
+    margin-top: 2px;
+    opacity: 0.8;
+  }
+
+  /* Power button — big Marantz-style rocker */
+  .mz-power-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .mz-power-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.38rem;
+    letter-spacing: 0.3em;
+    color: #3a2000;
+    text-transform: uppercase;
+  }
+
+  .mz-power-btn {
+    width: 38px;
+    height: 22px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 1px solid #111;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.07);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: all 0.1s;
+    position: relative;
+  }
+
+  .mz-power-btn:hover { background: linear-gradient(180deg, #333 0%, #222 100%); }
+  .mz-power-btn:active { transform: translateY(1px); box-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+
+  .mz-power-pip {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #222;
+    border: 1px solid #111;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+    transition: all 0.3s;
+  }
+
+  .stereo-unit.playing .mz-power-pip {
+    background: #ff6600;
+    box-shadow: 0 0 5px rgba(255,102,0,0.9), 0 0 10px rgba(255,102,0,0.5), inset 0 1px 0 rgba(255,180,80,0.5);
+    animation: pipBlink 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pipBlink { 0%,100%{opacity:1} 50%{opacity:0.55} }
+
+  .mz-power-line {
+    width: 1px; height: 12px;
+    background: #444;
+    border-radius: 1px;
+  }
+
+  /* ---- CENTER: Tuner dial window ---- */
+  .mz-tuner-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  /* Smoked glass panel over the dial */
+  .mz-glass {
+    background: linear-gradient(180deg, #1a1208 0%, #0e0c04 60%, #181408 100%);
+    border: 1px solid #3a2a00;
+    border-radius: 2px;
+    padding: 6px 10px 4px;
+    position: relative;
+    box-shadow:
+      inset 0 1px 8px rgba(0,0,0,0.9),
+      inset 0 0 20px rgba(255,100,0,0.04),
+      0 1px 0 rgba(255,200,80,0.15);
+    overflow: hidden;
+  }
+
+  /* Orange glow behind glass when playing */
+  .mz-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(255,120,0,0.0) 0%, transparent 70%);
+    transition: background 0.6s ease;
+    pointer-events: none;
+  }
+
+  .stereo-unit.playing .mz-glass::before {
+    background: radial-gradient(ellipse at 50% 100%, rgba(255,100,0,0.18) 0%, transparent 70%);
+  }
+
+  /* Tuner frequency scale */
+  .mz-dial-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    padding: 0 2px;
+  }
+
+  .mz-dial-scale span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.38rem;
+    color: #887040;
+    letter-spacing: 0.05em;
+  }
+
+  /* The needle track */
+  .mz-dial-track {
+    height: 2px;
+    background: linear-gradient(90deg, #2a1800, #4a3010 10%, #6a5020 50%, #4a3010 90%, #2a1800);
+    border-radius: 1px;
+    position: relative;
+    margin: 0 2px 4px;
+  }
+
+  /* Tick marks */
+  .mz-dial-track::before {
+    content: '';
+    position: absolute;
+    inset: -4px 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(10% - 1px),
+      rgba(180,130,40,0.4) calc(10% - 1px),
+      rgba(180,130,40,0.4) 10%
+    );
+  }
+
+  /* Orange needle */
+  .mz-needle {
+    position: absolute;
+    top: -8px;
+    width: 1px;
+    height: 18px;
+    background: linear-gradient(180deg, #ff6600, #ff4400);
+    box-shadow: 0 0 4px rgba(255,80,0,0.8);
+    border-radius: 1px;
+    left: 30%;
+    transition: left 0.8s ease;
+  }
+
+  .stereo-unit.playing .mz-needle {
+    animation: needleSweep 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes needleSweep {
+    0%   { left: 22%; }
+    30%  { left: 48%; }
+    60%  { left: 35%; }
+    80%  { left: 62%; }
+    100% { left: 44%; }
+  }
+
+  /* Scrolling text display inside glass */
+  .mz-display {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(0.55rem, 1.3vw, 0.75rem);
+    color: #e08020;
+    text-shadow: 0 0 8px rgba(255,120,0,0.7), 0 0 16px rgba(255,80,0,0.3);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 1.2em;
+    opacity: 0.5;
+    transition: opacity 0.4s;
+  }
+
+  .stereo-unit.playing .mz-display { opacity: 1; }
+
+  .mz-scale-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+  }
+
+  .mz-scale-bottom span {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.35rem;
+    color: #5a4020;
+    letter-spacing: 0.08em;
+  }
+
+  /* ---- RIGHT SIDE: Knobs ---- */
+  .mz-knobs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .mz-knob-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .mz-knob {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 38% 32%, #505050 0%, #2a2a2a 40%, #141414 100%);
+    border: 1px solid #555;
+    box-shadow:
+      0 3px 6px rgba(0,0,0,0.7),
+      0 1px 0 rgba(255,255,255,0.1),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+    position: relative;
+    cursor: pointer;
+  }
+
+  /* Silver cap top */
+  .mz-knob::before {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #888 0%, #3a3a3a 60%, #111 100%);
+    border: 1px solid #666;
+  }
+
+  /* Pointer line */
+  .mz-knob::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.5px;
+    height: 8px;
+    background: linear-gradient(180deg, #ddd, #888);
+    border-radius: 1px;
+    z-index: 2;
+  }
+
+  .mz-knob-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.38rem;
+    color: #2a1800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  /* ---- VU meters ---- */
+  .mz-vu-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+
+  .mz-vu-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.35rem;
+    letter-spacing: 0.3em;
+    color: #3a2000;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .mz-vu-meters {
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+    height: 24px;
+  }
+
+  .vu-bar { width: 3px; border-radius: 1px; background: #1a0e00; height: 100%; position: relative; overflow: hidden; }
+  .vu-fill {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(0deg, #b86800 0%, #e89000 55%, #ff3300 100%);
+    border-radius: 1px; height: 0%;
+  }
   .stereo-unit.playing .vu-fill { animation: vuDance var(--speed, 0.4s) ease-in-out infinite alternate; }
   @keyframes vuDance { from { height: var(--lo, 15%); } to { height: var(--hi, 80%); } }
 
-  .stereo-tuner { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-  .tuner-label { font-size: 0.42rem; letter-spacing: 0.35em; color: #555; text-transform: uppercase; }
-  .tuner-display { background: #0a0f08; border: 1px solid #1a1a1a; border-radius: 2px; padding: 4px 8px; font-family: 'Courier Prime', monospace; font-size: 0.9rem; color: #4dcc4d; text-shadow: 0 0 8px rgba(77,204,77,0.6); letter-spacing: 0.12em; white-space: nowrap; overflow: hidden; box-shadow: inset 0 1px 4px rgba(0,0,0,0.8); }
-  .tuner-scale { display: flex; justify-content: space-between; padding: 0 2px; }
-  .tuner-scale span { font-size: 0.38rem; color: #444; letter-spacing: 0.05em; }
-
-  .stereo-listen-btn { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-shrink: 0; }
-  .listen-label { font-size: 0.42rem; letter-spacing: 0.3em; color: #888; text-transform: uppercase; }
-  .power-btn { width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #3a3a3a, #1a1a1a); border: 2px solid #3a3a3a; box-shadow: 0 3px 6px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s ease; }
-  .power-btn:hover { background: radial-gradient(circle at 40% 35%, #444, #222); box-shadow: 0 2px 4px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 12px rgba(232,64,64,0.2); }
-  .power-btn:active { transform: translateY(1px); box-shadow: 0 1px 3px rgba(0,0,0,0.8), inset 0 1px 0 rgba(0,0,0,0.3); }
-  .stereo-unit.playing .power-btn { border-color: #e84040; box-shadow: 0 3px 6px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 16px rgba(232,64,64,0.4); }
-  .power-icon { width: 18px; height: 18px; color: #666; transition: color 0.2s; }
-  .stereo-unit.playing .power-icon { color: #e84040; filter: drop-shadow(0 0 4px rgba(232,64,64,0.8)); }
-  .power-indicator { width: 6px; height: 6px; border-radius: 50%; background: #2a2a2a; border: 1px solid #333; transition: all 0.3s ease; }
-  .stereo-unit.playing .power-indicator { background: #e84040; box-shadow: 0 0 6px rgba(232,64,64,0.9), 0 0 12px rgba(232,64,64,0.4); animation: blink 2s ease-in-out infinite; }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-
-  .stereo-knobs { display: flex; gap: 16px; align-items: center; margin-left: auto; flex-shrink: 0; }
-  .knob-group { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .knob { width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 38% 32%, #444, #1a1a1a); border: 1px solid #3a3a3a; box-shadow: 0 2px 4px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06); position: relative; }
-  .knob::after { content: ''; position: absolute; top: 4px; left: 50%; transform: translateX(-50%); width: 2px; height: 6px; background: #888; border-radius: 1px; }
-  .knob-label { font-size: 0.38rem; color: #444; letter-spacing: 0.2em; text-transform: uppercase; }
-
-  .stereo-panel { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); background: #0d0d0d; }
+  /* ---- Spotify slide panel ---- */
+  .stereo-panel { max-height: 0; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1); background: #0d0d0d; }
   .stereo-unit.playing .stereo-panel { max-height: 420px; }
-  .stereo-panel-inner { padding: 16px 20px 20px; border-top: 1px solid #222; }
-  .panel-screws { display: flex; justify-content: space-between; margin-bottom: 12px; padding: 0 4px; }
-  .screw { width: 8px; height: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #3a3a3a, #1a1a1a); border: 1px solid #2a2a2a; }
+  .stereo-panel-inner {
+    padding: 16px 20px 20px;
+    border-top: 2px solid #8a6010;
+    background: linear-gradient(180deg, #1a1208, #0d0d0d);
+  }
+  .panel-screws { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .screw {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #c8a840, #7a6020);
+    border: 1px solid #5a4010;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    position: relative;
+  }
+  .screw::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    width: 6px; height: 1px;
+    background: rgba(0,0,0,0.5);
+  }
 </style>
 </head>
 <body>
@@ -526,38 +854,58 @@
   <div class="instructions">Click any record to flip it over and read the sleeve notes.</div>
 </header>
 
-<div class="grid" id="grid"></div>
-
 <div class="stereo-section">
   <div class="stereo-unit" id="stereoUnit">
     <div class="stereo-faceplate" onclick="toggleStereo()">
-      <div class="stereo-brand">
-        <div class="stereo-brand-name">LISTEN HERE</div>
-        <div class="stereo-brand-model">PLAYLIST · AM/FM STEREO</div>
-      </div>
-      <div class="stereo-vu" id="vuMeters"></div>
-      <div class="stereo-tuner">
-        <div class="tuner-label">Now Playing</div>
-        <div class="tuner-display" id="tunerDisplay">— — — · · · — — —</div>
-        <div class="tuner-scale">
-          <span>88</span><span>92</span><span>96</span><span>100</span><span>104</span><span>108</span>
+
+      <!-- LEFT: brand + power -->
+      <div class="mz-left">
+        <div class="mz-brand">
+          <div class="mz-brand-name">Listen Here</div>
+          <div class="mz-brand-model">Stereophonic · FM/AM</div>
+        </div>
+        <div class="mz-power-wrap">
+          <div class="mz-power-label">Power</div>
+          <div class="mz-power-btn" onclick="toggleStereo(); event.stopPropagation()">
+            <div class="mz-power-pip"></div>
+            <div class="mz-power-line"></div>
+          </div>
         </div>
       </div>
-      <div class="stereo-knobs">
-        <div class="knob-group"><div class="knob"></div><div class="knob-label">Bass</div></div>
-        <div class="knob-group"><div class="knob"></div><div class="knob-label">Treb</div></div>
-        <div class="knob-group"><div class="knob"></div><div class="knob-label">Vol</div></div>
-      </div>
-      <div class="stereo-listen-btn">
-        <div class="listen-label">Power</div>
-        <div class="power-btn" onclick="toggleStereo(); event.stopPropagation()">
-          <svg class="power-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <path d="M12 2v6M6.8 6.8A8 8 0 1 0 17.2 6.8"/>
-          </svg>
+
+      <!-- CENTER: smoked glass tuner window -->
+      <div class="mz-tuner-wrap">
+        <div class="mz-glass">
+          <div class="mz-dial-scale">
+            <span>88</span><span>92</span><span>96</span><span>100</span><span>104</span><span>108</span>
+          </div>
+          <div class="mz-dial-track">
+            <div class="mz-needle"></div>
+          </div>
+          <div class="mz-display" id="tunerDisplay">— — — · · · — — —</div>
         </div>
-        <div class="power-indicator"></div>
+        <div class="mz-scale-bottom">
+          <span>FM STEREO</span><span>WHOSE 1960s? · A SOURCE SET</span><span>88–108 MHz</span>
+        </div>
       </div>
+
+      <!-- VU meters -->
+      <div class="mz-vu-wrap">
+        <div class="mz-vu-label">Level</div>
+        <div class="mz-vu-meters" id="vuMeters"></div>
+      </div>
+
+      <!-- RIGHT: knobs -->
+      <div class="mz-knobs">
+        <div class="mz-knob-group"><div class="mz-knob"></div><div class="mz-knob-label">Bass</div></div>
+        <div class="mz-knob-group"><div class="mz-knob"></div><div class="mz-knob-label">Treb</div></div>
+        <div class="mz-knob-group"><div class="mz-knob"></div><div class="mz-knob-label">Bal</div></div>
+        <div class="mz-knob-group"><div class="mz-knob"></div><div class="mz-knob-label">Vol</div></div>
+      </div>
+
     </div>
+
+    <!-- Spotify slide-down panel -->
     <div class="stereo-panel">
       <div class="stereo-panel-inner">
         <div class="panel-screws">
@@ -575,6 +923,8 @@
     </div>
   </div>
 </div>
+
+<div class="grid" id="grid"></div>
 
 <footer>American Society &amp; Culture &middot; The Pingry School &middot; 20 Sources</footer>
 
